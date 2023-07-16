@@ -66,58 +66,99 @@
                 <th colspan="2">토</th>
                 <th colspan="2">일</th>
             </tr>
-            <tr>
-                <td></td>
-                <td>open</td>
-                <td>close</td>
-                <td>open</td>
-                <td>close</td>
-                <td>open</td>
-                <td>close</td>
-                <td>open</td>
-                <td>close</td>
-                <td>open</td>
-                <td>close</td>
-                <td>open</td>
-                <td>close</td>
-                <td>open</td>
-                <td>close</td>
-            </tr>
         </thead>
         <tbody id="timeTable">
-
+        </tbody>
     </table>
-</body>
-<script>
-    fetch('https://pookaboo-dev.github.io/temp-hours/hours.json')
-        .then(response => response.json())
-        .then(time_ranges => {
-            console.log(JSON.stringify(time_ranges))
-            var tableBody = document.getElementById('timeTable');
-            for (var time_range in time_ranges) {
-                var row = document.createElement('tr');
-                var timeRangeCell = document.createElement('td');
-                timeRangeCell.textContent = time_range;
-                row.appendChild(timeRangeCell);
-                var days = time_ranges[time_range];
-                for (var day in days) {
-                    var openCell = document.createElement('td');
-                    var closeCell = document.createElement('td');
-                    var openInput = document.createElement('input');
-                    var closeInput = document.createElement('input');
-                    openInput.setAttribute('type', 'time');
-                    closeInput.setAttribute('type', 'time');
-                    openInput.value = days[day].open;
-                    closeInput.value = days[day].close;
-                    openCell.appendChild(openInput);
-                    closeCell.appendChild(closeInput);
-                    row.appendChild(openCell);
-                    row.appendChild(closeCell);
+
+    <script>
+        var time_ranges = {
+            "24시간": {
+                "월": {
+                    "open": null,
+                    "close": null
+                },
+                "화": {
+                    "open": null,
+                    "close": null
+                },
+                "수": {
+                    "open": null,
+                    "close": null
+                },
+                "목": {
+                    "open": null,
+                    "close": null
+                },
+                "금": {
+                    "open": null,
+                    "close": null
+                },
+                "토": {
+                    "open": null,
+                    "close": null
+                },
+                "일": {
+                    "open": null,
+                    "close": null
                 }
-                tableBody.appendChild(row);
+            },
+            "08:00~23:00": {
+                "월": {
+                    "open": null,
+                    "close": null
+                },
+                "화": {
+                    "open": null,
+                    "close": null
+                },
+                "수": {
+                    "open": null,
+                    "close": null
+                },
+                "목": {
+                    "open": null,
+                    "close": null
+                },
+                "금": {
+                    "open": null,
+                    "close": null
+                },
+                "토": {
+                    "open": null,
+                    "close": null
+                },
+                "일": {
+                    "open": null,
+                    "close": null
+                }
             }
-        })
-        .catch(error => console.error('Error:', error));
-</script>
+        }
+
+        var tableBody = document.getElementById('timeTable');
+        for (var time_range in time_ranges) {
+            var row = document.createElement('tr');
+            var timeRangeCell = document.createElement('td');
+            timeRangeCell.textContent = time_range;
+            row.appendChild(timeRangeCell);
+            var days = time_ranges[time_range];
+            for (var day in days) {
+                var openCell = document.createElement('td');
+                var closeCell = document.createElement('td');
+                var openInput = document.createElement('input');
+                var closeInput = document.createElement('input');
+                openInput.setAttribute('type', 'time');
+                closeInput.setAttribute('type', 'time');
+                openInput.value = days[day].open;
+                closeInput.value = days[day].close;
+                openCell.appendChild(openInput);
+                closeCell.appendChild(closeInput);
+                row.appendChild(openCell);
+                row.appendChild(closeCell);
+            }
+            tableBody.appendChild(row);
+        }
+    </script>
+</body>
 
 </html>
