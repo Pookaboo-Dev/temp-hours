@@ -92,7 +92,7 @@
     fetch('./hours.json')
         .then(response => response.json())
         .then(time_ranges => {
-            console.log(time_ranges)
+            console.log(JSON.stringify(time_ranges))
             var tableBody = document.getElementById('timeTable');
             for (var time_range in time_ranges) {
                 var row = document.createElement('tr');
