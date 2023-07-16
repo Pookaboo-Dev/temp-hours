@@ -89,7 +89,7 @@
     </table>
 </body>
 <script>
-    fetch('./hours.json')
+    fetch('https://pookaboo-dev.github.io/temp-hours/hours.json')
         .then(response => response.json())
         .then(time_ranges => {
             console.log(JSON.stringify(time_ranges))
